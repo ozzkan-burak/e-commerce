@@ -34,4 +34,17 @@ const userSchema = new mongoose.Schema({
   }
 },
 { timestamps: true }
-)
+);
+
+
+userSchema.virtual('password')
+.set(function(password){
+  this._password = password
+  this.salt = uuid()
+  this.hadhed_password = this.encryptPassword(password)
+})
+.get(function(){
+  return this_password
+})
+
+userSchema.add

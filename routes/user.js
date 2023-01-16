@@ -6,3 +6,4 @@ const {sayHi} = require ('../controllers/user.js');
 router.get("/", sayHi);
 
 module.exports = router;
+
