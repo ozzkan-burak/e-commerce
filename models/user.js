@@ -47,4 +47,17 @@ userSchema.virtual('password')
   return this_password
 })
 
-userSchema.add
+userSchema.metohods = {
+  encrptedPassword: function(password) {
+    if(!password) return '';
+    try {
+      return crypto.createHmac('sha1', this.salt)
+                  .update(password)
+                  .digest('hex')
+    } catch (err) {
+      return ''
+    }
+  }
+}
+
+module.exports = mongoose.model("User")
