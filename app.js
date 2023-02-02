@@ -6,7 +6,6 @@ require('dotenv').config();
 
 // import routes
 const userRoutes = require('./routes/user');
-const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
  
 // app

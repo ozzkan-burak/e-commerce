@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const cypto = require('cyrpto');
-const uuidv1 = require("uuid/v1");  
+//const cypto = require('cyrpto');
+//const uuidv1 = require("uuid/v1");  
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
   },
   history: {
     type: Array,
-    default []
+    default: []
   }
 },
 { timestamps: true }
@@ -60,4 +60,4 @@ userSchema.metohods = {
   }
 }
 
-module.exports = mongoose.model("User")
+module.exports = mongoose.model("User", userSchema);
