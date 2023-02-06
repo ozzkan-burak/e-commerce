@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 //const cypto = require('cyrpto');
-//const uuidv1 = require("uuid/v1");  
+const { v4: uuidv4 } = require('uuid'); 
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -37,27 +37,27 @@ const userSchema = new mongoose.Schema({
 );
 
 
-userSchema.virtual('password')
-.set(function(password){
-  this._password = password
-  this.salt = uuid()
-  this.hadhed_password = this.encryptPassword(password)
-})
-.get(function(){
-  return this_password
-})
+// userSchema.virtual('password')
+// .set(function(password){
+//   this._password = password
+//   this.salt = uuidv4()
+//   this.hadhed_password = this.encryptPassword(password)
+// })
+// .get(function(){
+//   return this_password
+// })
 
-userSchema.metohods = {
-  encrptedPassword: function(password) {
-    if(!password) return '';
-    try {
-      return crypto.createHmac('sha1', this.salt)
-                  .update(password)
-                  .digest('hex')
-    } catch (err) {
-      return ''
-    }
-  }
-}
+// userSchema.metohods = {
+//   encrptedPassword: function(password) {
+//     if(!password) return '';
+//     try {
+//       return crypto.createHmac('sha1', this.salt)
+//                   .update(password)
+//                   .digest('hex')
+//     } catch (err) {
+//       return ''
+//     }
+//   }
+// }
 
 module.exports = mongoose.model("User", userSchema);
